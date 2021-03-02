@@ -6,50 +6,50 @@ import * as OuterBoxWireframe from './wireframe/mesh';
 import * as Utils from '../utils/utils';
 
 export const group = async () => {
-    let innerBox, innerBoxWireframe, outerBox, outerBoxWireframe, reactCube;
+  let innerBox, innerBoxWireframe, outerBox, outerBoxWireframe, reactCube;
 
-    /* Define group */
-    reactCube = new THREE.Object3D();
+  /* Define group */
+  reactCube = new THREE.Object3D();
 
-    /* Define inner box */
-    innerBox = InnerBox.mesh();
+  /* Define inner box */
+  innerBox = InnerBox.mesh();
 
-    /* Configure inner box */
-    innerBox.position.setY(1);
+  /* Configure inner box */
+  innerBox.position.setY(1);
 
-    /* Add inner box to scene */
-    reactCube.add(innerBox);
+  /* Add inner box to scene */
+  reactCube.add(innerBox);
 
-    /* Define inner box wireframe */
-    innerBoxWireframe = await InnerBoxWireframe.mesh(0.65);
+  /* Define inner box wireframe */
+  innerBoxWireframe = await InnerBoxWireframe.mesh(0.65);
 
-    /* Configure outer box wireframe */
-    innerBoxWireframe.position.setY(1);
+  /* Configure outer box wireframe */
+  innerBoxWireframe.position.setY(1);
 
-    /* Add inner box wireframe to scene */
-    reactCube.add(innerBoxWireframe);
+  /* Add inner box wireframe to scene */
+  reactCube.add(innerBoxWireframe);
 
-    /* Define outer box */
-    outerBox = await OuterBox.mesh();
+  /* Define outer box */
+  outerBox = await OuterBox.mesh();
 
-    /* Configure outer box */
-    outerBox.position.setY(1);
-    outerBox.material.side = 1;
+  /* Configure outer box */
+  outerBox.position.setY(1);
+  outerBox.material.side = 1;
 
-    /* Add outer box to scene */
-    reactCube.add(outerBox);
+  /* Add outer box to scene */
+  reactCube.add(outerBox);
 
-    /* Define outer box wireframe */
-    outerBoxWireframe = await OuterBoxWireframe.mesh();
+  /* Define outer box wireframe */
+  outerBoxWireframe = await OuterBoxWireframe.mesh();
 
-    /* Configure outer box wireframe */
-    outerBoxWireframe.position.setY(1);
+  /* Configure outer box wireframe */
+  outerBoxWireframe.position.setY(1);
 
-    /* Add outer box wireframe to scene */
-    reactCube.add(outerBoxWireframe);
+  /* Add outer box wireframe to scene */
+  reactCube.add(outerBoxWireframe);
 
-    /* Configure group */
-    reactCube.rotation.y = Utils.convertRadToDeg(45);
+  /* Configure group */
+  reactCube.rotation.y = Utils.convertRadToDeg(45);
 
-    return reactCube;
+  return reactCube;
 };

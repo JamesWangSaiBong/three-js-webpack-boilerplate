@@ -113,7 +113,7 @@ npm run fix-styling
 - [`optimize-css-assets-webpack-plugin`](https://github.com/NMFR/optimize-css-assets-webpack-plugin) - Optimize and minimize CSS assets.
 - [`stylelint-webpack-plugin`](https://github.com/webpack-contrib/stylelint-webpack-plugin) - A Stylelint plugin for webpack.
 
-## Author & Contributors
+## Boilerplate Author & Contributors
 - [`Rickard Börjesson`](https://github.com/rickepicke)
 - [`Guillaume Fradin`](https://github.com/frading)
 - [`Markus Bjerre`](https://github.com/brandflugan) - Author

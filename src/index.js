@@ -13,87 +13,87 @@ const contentElement = document.querySelector('#content-wrapper');
 let camera, controls, scene, renderer, aspectHeight, aspectWidth, gridHelper;
 
 const appendContent = () => {
-    // Create Webpack SVG logo node
-    const webpackLogo = document.createElement('img');
-    webpackLogo.src = WebpackLogo;
+  // Create Webpack SVG logo node
+  const webpackLogo = document.createElement('img');
+  webpackLogo.src = WebpackLogo;
 
-    // Create Three.js PNG logo node
-    const threeLogo = document.createElement('img');
-    threeLogo.src = ThreeLogo;
+  // Create Three.js PNG logo node
+  const threeLogo = document.createElement('img');
+  threeLogo.src = ThreeLogo;
 
-    // Create heading node
-    const greeting = document.createElement('h1');
-    greeting.textContent = 'Three.js Webpack boilerplate';
+  // Create heading node
+  const greeting = document.createElement('h1');
+  greeting.textContent = 'Three.js Webpack boilerplate';
 
-    // Append logos and heading nodes to the content DOM element
-    contentElement.querySelector('#logo-wrapper').append(threeLogo, webpackLogo);
-    contentElement.append(greeting);
+  // Append logos and heading nodes to the content DOM element
+  contentElement.querySelector('#logo-wrapper').append(threeLogo, webpackLogo);
+  contentElement.append(greeting);
 };
 
 const onResize = () => {
-    aspectWidth = window.innerWidth;
-    aspectHeight = window.innerHeight - contentElement.getBoundingClientRect().bottom;
-    camera.aspect = aspectWidth / aspectHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(aspectWidth, aspectHeight);
+  aspectWidth = window.innerWidth;
+  aspectHeight = window.innerHeight - contentElement.getBoundingClientRect().bottom;
+  camera.aspect = aspectWidth / aspectHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(aspectWidth, aspectHeight);
 };
 
 const initThreeJS = async () => {
-    /* Define aspect */
-    aspectWidth = window.innerWidth;
-    aspectHeight = window.innerHeight - contentElement.getBoundingClientRect().bottom;
+  /* Define aspect */
+  aspectWidth = window.innerWidth;
+  aspectHeight = window.innerHeight - contentElement.getBoundingClientRect().bottom;
 
-    /* Define camera */
-    camera = SceneSetup.camera(aspectWidth, aspectHeight);
+  /* Define camera */
+  camera = SceneSetup.camera(aspectWidth, aspectHeight);
 
-    /* Configurate camera */
-    camera.position.set(0, 5, 5.65);
+  /* Configurate camera */
+  camera.position.set(0, 5, 5.65);
 
-    /* Define scene */
-    scene = SceneSetup.scene();
+  /* Define scene */
+  scene = SceneSetup.scene();
 
-    /* Define grid helper */
-    gridHelper = SceneSetup.gridHelper(20);
+  /* Define grid helper */
+  gridHelper = SceneSetup.gridHelper(20);
 
-    /* Configurate grid helper */
-    gridHelper.material.opacity = 0.5;
-    gridHelper.material.transparent = true;
+  /* Configurate grid helper */
+  gridHelper.material.opacity = 0.5;
+  gridHelper.material.transparent = true;
 
-    /* Add grid helper to scene */
-    scene.add(gridHelper);
+  /* Add grid helper to scene */
+  scene.add(gridHelper);
 
-    /* Add react cube to scene */
-    scene.add(await ReactCube.group());
+  /* Add react cube to scene */
+  scene.add(await ReactCube.group());
 
-    /* Define renderer */
-    renderer = SceneSetup.renderer({ antialias: true });
+  /* Define renderer */
+  renderer = SceneSetup.renderer({ antialias: true });
 
-    /* Configure renderer */
-    renderer.setSize(aspectWidth, aspectHeight);
+  /* Configure renderer */
+  renderer.setSize(aspectWidth, aspectHeight);
 
-    /* Define controls */
-    controls = SceneSetup.controls(camera, renderer.domElement);
+  /* Define controls */
+  controls = SceneSetup.controls(camera, renderer.domElement);
 
-    /* Configurate controls */
-    controls.maxPolarAngle = (0.9 * Math.PI) / 2;
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.15;
+  /* Configurate controls */
+  controls.maxPolarAngle = (0.9 * Math.PI) / 2;
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.15;
 
-    /* Add event listener on resize */
-    window.addEventListener('resize', onResize, false);
+  /* Add event listener on resize */
+  window.addEventListener('resize', onResize, false);
 
-    /* Append canvas to DOM */
-    rootElement.appendChild(renderer.domElement);
+  /* Append canvas to DOM */
+  rootElement.appendChild(renderer.domElement);
 };
 
 const animate = () => {
-    requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
 
-    /* Update controls when damping */
-    controls.update();
+  /* Update controls when damping */
+  controls.update();
 
-    /* Render scene */
-    renderer.render(scene, camera);
+  /* Render scene */
+  renderer.render(scene, camera);
 };
 
 /* Run */

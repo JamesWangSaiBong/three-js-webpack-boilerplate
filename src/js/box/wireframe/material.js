@@ -1,5 +1,5 @@
 import * as THREE from 'three';
 
 export const material = () => {
-    return new THREE.MeshBasicMaterial({ color: 0xffffff });
+  return new THREE.MeshBasicMaterial({ color: 0xffffff });
 };
